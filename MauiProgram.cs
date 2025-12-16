@@ -13,13 +13,24 @@ namespace GeoSilhouette
                 .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
+                    fonts.AddFont("Comic Sans MS.ttf", "ComicSans");
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddSingleton<ViewModels.MainViewModel>();
+            builder.Services.AddSingleton<Pages.ChosePage>();
+            builder.Services.AddSingleton<ViewModels.ChoseViewModel>();
+            builder.Services.AddSingleton<Pages.GamePage>();
+            builder.Services.AddSingleton<ViewModels.GameViewModel>();
+            builder.Services.AddSingleton<Pages.StatsPage>();
+            builder.Services.AddSingleton<ViewModels.StatViewModel>();
+
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
+
 
             return builder.Build();
         }

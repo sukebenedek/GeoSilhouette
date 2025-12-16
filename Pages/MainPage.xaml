@@ -1,9 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     x:Class="GeoSilhouette.MainPage"
-    Shell.NavBarIsVisible="False">
-
+    Shell.NavBarIsVisible="False"
+            >
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="{x:DynamicResource Primary}"/>
+    </ContentPage.Behaviors>
     <ScrollView>
         <Grid
             Padding="20"
@@ -23,7 +27,7 @@
                 Text="Guess the country by its shape"
                 FontSize="16"
                 HorizontalOptions="Center"
-                Margin="0 0 20 0"
+                Margin="0, 0, 20, 0"
             />
 
             <Frame
@@ -49,6 +53,7 @@
                 FontSize="24"
                 CornerRadius="14"
                 HeightRequest="80" 
+                Command="{Binding PlayCommand}"
             />
 
             <Button
@@ -61,12 +66,13 @@
             />
 
             <Label
-                Margin="100 0 0 0"
+                Margin="0, 100, 0, 0"
                 Grid.Row="6"
                 Text="Süke Benedek 2025"
                 FontSize="15"
                 TextColor="Gray"
                 HorizontalOptions="End"
+                FontAttributes="Italic"
             />
 
         </Grid>

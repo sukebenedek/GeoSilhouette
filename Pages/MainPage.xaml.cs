@@ -2,14 +2,10 @@
 {
     public partial class MainPage : ContentPage
     {
-        public MainPage()
+        public MainPage(ViewModels.MainViewModel vm)
         {
             InitializeComponent();
-        }
-
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-            
+            BindingContext = vm;
         }
     }
 
