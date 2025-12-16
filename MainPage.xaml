@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="GeoSilhouette.MainPage"
+    Shell.NavBarIsVisible="False">
+
+    <ScrollView>
+        <Grid
+            Padding="20"
+            RowDefinitions="Auto, Auto, Auto, *, Auto, Auto, Auto"
+            ColumnDefinitions="*">
+
+            <Label
+                Grid.Row="0"
+                Text="GeoSilhouette"
+                FontSize="34"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+            />
+
+            <Label
+                Grid.Row="1"
+                Text="Guess the country by its shape"
+                FontSize="16"
+                HorizontalOptions="Center"
+                Margin="0 0 20 0"
+            />
+
+            <Frame
+                Grid.Row="2"
+                Margin="0,20"
+                Padding="10"
+                CornerRadius="16"
+                HasShadow="True">
+
+                <Image
+                    x:Name="CountryImage"
+                    Source="map.png"
+                />
+            </Frame>
+
+            <Grid Grid.Row="3" />
+
+            <Button
+                Grid.Row="4"
+                Margin="0,20,0,0"
+                Text="Play"
+                FontAttributes="Bold"
+                FontSize="24"
+                CornerRadius="14"
+                HeightRequest="80" 
+            />
+
+            <Button
+                Grid.Row="5"
+                Margin="0,20,0,0"
+                FontSize="24"
+                Text="Statistics" HeightRequest="80"
+                FontAttributes="Bold"
+                CornerRadius="14" 
+            />
+
+            <Label
+                Margin="100 0 0 0"
+                Grid.Row="6"
+                Text="Süke Benedek 2025"
+                FontSize="15"
+                TextColor="Gray"
+                HorizontalOptions="End"
+            />
+
+        </Grid>
+    </ScrollView>
+
+</ContentPage>
