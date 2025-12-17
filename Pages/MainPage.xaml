@@ -5,9 +5,9 @@
     x:Class="GeoSilhouette.MainPage"
     Shell.NavBarIsVisible="False"
             >
-    <ContentPage.Behaviors>
+    <!--<ContentPage.Behaviors>
         <toolkit:StatusBarBehavior StatusBarColor="{x:DynamicResource Primary}"/>
-    </ContentPage.Behaviors>
+    </ContentPage.Behaviors>-->
     <ScrollView>
         <Grid
             Padding="20"
