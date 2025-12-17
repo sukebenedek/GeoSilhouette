@@ -2,11 +2,221 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GeoSilhouette.Pages.GamePage"
-             Title="GamePage">
+             Title="">
     <VerticalStackLayout>
-        <Label 
-            Text="game"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Grid
+        RowDefinitions="Auto,Auto,Auto,*"
+        Padding="20"
+        RowSpacing="20">
+
+            <!-- ROUND COUNTER -->
+
+            <HorizontalStackLayout Grid.Row="0" HorizontalOptions="Center">
+                <Label
+            
+            Text="Round"
+            FontSize="36"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            />
+
+                <Label
+
+Text="0/5"
+                    WidthRequest="90"
+FontSize="36"
+FontAttributes="Bold, Italic"
+                    Padding="10, 0, 10, 0"
+HorizontalOptions="Center"
+/>
+            </HorizontalStackLayout>
+
+            <!-- IMAGE CARD -->
+            <Border
+            Grid.Row="1"
+            Stroke="Black"
+            StrokeThickness="3"
+            BackgroundColor="White"
+            StrokeShape="RoundRectangle 20"
+            Padding="10"
+            HorizontalOptions="Center"
+            WidthRequest="300"
+            HeightRequest="200">
+
+                <Image
+                Source="{Binding SilhouetteImage}"
+                Aspect="AspectFit" />
+            </Border>
+
+            <!-- DROPDOWN / PICKER -->
+            <Border
+            Grid.Row="2"
+            Stroke="Black"
+            StrokeThickness="2"
+            StrokeShape="RoundRectangle 10"
+            BackgroundColor="White"
+            Padding="10">
+
+                <Picker
+                Title="Select country"
+                ItemsSource="{Binding Countries}"
+                SelectedItem="{Binding SelectedCountry}"
+                FontSize="18" />
+            </Border>
+
+            <!-- ANSWERS LIST -->
+            <Grid Grid.Row="3">
+                <ScrollView>
+                    <VerticalStackLayout>
+
+                        <VerticalStackLayout HeightRequest="50" Spacing="0">
+                            <Label
+                Text="United States"
+                VerticalTextAlignment="Center"
+                FontAttributes="Bold"
+                FontSize="18" />
+
+                            <Label
+                Text="East"
+                Margin="16,0,0,100"
+                VerticalTextAlignment="Center"
+                FontAttributes="Bold"
+                FontSize="18"
+                TextColor="Red" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout HeightRequest="50" Spacing="0">
+                            <Label
+    Text="United States"
+    VerticalTextAlignment="Center"
+    FontAttributes="Bold"
+    FontSize="18" />
+
+                            <Label
+    Text="East"
+    Margin="16,0,0,100"
+    VerticalTextAlignment="Center"
+    FontAttributes="Bold"
+    FontSize="18"
+    TextColor="Red" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout HeightRequest="50" Spacing="0">
+                            <Label
+Text="United States"
+VerticalTextAlignment="Center"
+FontAttributes="Bold"
+FontSize="18" />
+
+                            <Label
+Text="East"
+Margin="16,0,0,100"
+VerticalTextAlignment="Center"
+FontAttributes="Bold"
+FontSize="18"
+TextColor="Red" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout HeightRequest="50" Spacing="0">
+                            <Label
+Text="United States"
+VerticalTextAlignment="Center"
+FontAttributes="Bold"
+FontSize="18" />
+
+                            <Label
+Text="East"
+Margin="16,0,0,100"
+VerticalTextAlignment="Center"
+FontAttributes="Bold"
+FontSize="18"
+TextColor="Red" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout HeightRequest="50" Spacing="0">
+                            <Label
+Text="United States"
+VerticalTextAlignment="Center"
+FontAttributes="Bold"
+FontSize="18" />
+
+                            <Label
+Text="East"
+Margin="16,0,0,100"
+VerticalTextAlignment="Center"
+FontAttributes="Bold"
+FontSize="18"
+TextColor="Red" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout HeightRequest="50" Spacing="0">
+                            <Label
+Text="United States"
+VerticalTextAlignment="Center"
+FontAttributes="Bold"
+FontSize="18" />
+
+                            <Label
+Text="East"
+Margin="16,0,0,100"
+VerticalTextAlignment="Center"
+FontAttributes="Bold"
+FontSize="18"
+TextColor="Red" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout HeightRequest="50" Spacing="0">
+                            <Label
+Text="United States"
+VerticalTextAlignment="Center"
+FontAttributes="Bold"
+FontSize="18" />
+
+                            <Label
+Text="East"
+Margin="16,0,0,100"
+VerticalTextAlignment="Center"
+FontAttributes="Bold"
+FontSize="18"
+TextColor="Red" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout HeightRequest="50" Spacing="0">
+                            <Label
+Text="United States"
+VerticalTextAlignment="Center"
+FontAttributes="Bold"
+FontSize="18" />
+
+                            <Label
+Text="East"
+Margin="16,0,0,100"
+VerticalTextAlignment="Center"
+FontAttributes="Bold"
+FontSize="18"
+TextColor="Red" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout HeightRequest="50" Spacing="0">
+                            <Label
+Text="United States"
+VerticalTextAlignment="Center"
+FontAttributes="Bold"
+FontSize="18" />
+
+                            <Label
+Text="East"
+Margin="16,0,0,100"
+VerticalTextAlignment="Center"
+FontAttributes="Bold"
+FontSize="18"
+TextColor="Red" />
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </ScrollView>
+
+
+                <!-- SCROLL INDICATOR -->
+                <BoxView
+                WidthRequest="6"
+                CornerRadius="3"
+                BackgroundColor="Black"
+                HorizontalOptions="End"
+                Margin="0,0,4,0" />
+            </Grid>
+
+        </Grid>
     </VerticalStackLayout>
 </ContentPage>
