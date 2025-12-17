@@ -14,7 +14,7 @@
                 HorizontalOptions="Center"
                 FontAttributes="Bold"
                 Margin="0, 30, 0, 0"
-                FontSize="40"
+                FontSize="35"
             />
             <Grid Grid.Row="1" HeightRequest="100" />
             <Button Text="Newborn Infant" Grid.Row="2" HeightRequest="80"

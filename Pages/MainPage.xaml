@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     x:Class="GeoSilhouette.MainPage"
     Shell.NavBarIsVisible="False"
-            >
+>
     <!--<ContentPage.Behaviors>
         <toolkit:StatusBarBehavior StatusBarColor="{x:DynamicResource Primary}"/>
     </ContentPage.Behaviors>-->
@@ -52,7 +52,7 @@
                 FontAttributes="Bold"
                 FontSize="24"
                 CornerRadius="14"
-                HeightRequest="80" 
+                HeightRequest="80"
                 Command="{Binding PlayCommand}"
             />
 
@@ -62,7 +62,7 @@
                 FontSize="24"
                 Text="Statistics" HeightRequest="80"
                 FontAttributes="Bold"
-                CornerRadius="14" 
+                CornerRadius="14"
             />
 
             <Label

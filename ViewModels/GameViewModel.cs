@@ -7,19 +7,11 @@ using System.Threading.Tasks;
 
 namespace GeoSilhouette.ViewModels
 {
-    public partial class GameViewModel : ObservableObject, IQueryAttributable
+    public partial class GameViewModel : ObservableObject
     {
         [ObservableProperty]
-        public string difficulty = "not yet";
-
-        public void ApplyQueryAttributes(IDictionary<string, object> query)
-        {
-            if (query.TryGetValue("difficulty", out var diff))
-            {
-                Difficulty = diff.ToString();
-                Console.WriteLine(diff);
-            }
-        }
+        private string silhouetteImage =
+            "https://raw.githubusercontent.com/djaiss/mapsicon/master/all/fr/1024.png";
     }
 
 }

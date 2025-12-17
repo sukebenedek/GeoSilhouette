@@ -1,1 +1,1 @@
-﻿iconja, splashscreenje
+﻿statusbar
