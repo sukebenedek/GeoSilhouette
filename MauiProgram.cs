@@ -27,6 +27,8 @@ namespace GeoSilhouette
             builder.Services.AddSingleton<ViewModels.StatViewModel>();
 
 
+
+
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
