@@ -48,8 +48,22 @@ namespace GeoSilhouette
         }
 
 
+        private static readonly HttpClient _http = new HttpClient();
+
+        public async Task<bool> ImageExistsAsync()
+        {
+            try
+            {
+                using var request = new HttpRequestMessage(HttpMethod.Head, this.SilhouetteImage);
+                using var response = await _http.SendAsync(request);
+                return response.IsSuccessStatusCode;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
     }
-
-
-
 }

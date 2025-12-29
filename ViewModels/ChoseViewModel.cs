@@ -11,10 +11,10 @@ namespace GeoSilhouette.ViewModels
     public partial class ChoseViewModel : ObservableObject
     {
         [RelayCommand]
-        private async Task Chose()
+        private async Task Chose(string difficultyLevel)
         {
-            // navigate to ChoosePage (assuming registered in AppShell)
-            await Shell.Current.GoToAsync($"{nameof(Pages.GamePage)}?difficulty={"easy"}");
+            // Use the variable 'difficultyLevel' inside the curly braces
+            await Shell.Current.GoToAsync($"{nameof(Pages.GamePage)}?difficulty={difficultyLevel}");
         }
     }
 }

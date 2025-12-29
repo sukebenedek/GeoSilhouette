@@ -1,1 +1,2 @@
 ﻿statusbar
+difficulty info btn
