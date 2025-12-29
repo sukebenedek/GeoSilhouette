@@ -64,6 +64,71 @@ namespace GeoSilhouette
             }
         }
 
+        public static string GetDirection(Country o, Country t)
+        {
+            var origin = o.latlng;
+            var target = t.latlng;
 
+            // Safety check: Ensure both lists have at least 2 items (Lat, Lng)
+            if (origin == null || origin.Count < 2 || target == null || target.Count < 2)
+                return "Unknown";
+
+            // Convert degrees to radians
+            double lat1 = ToRadians(origin[0]);
+            double lon1 = ToRadians(origin[1]);
+            double lat2 = ToRadians(target[0]);
+            double lon2 = ToRadians(target[1]);
+
+            double dLon = lon2 - lon1;
+
+            // Calculate Bearing using the formula
+            double y = Math.Sin(dLon) * Math.Cos(lat2);
+            double x = Math.Cos(lat1) * Math.Sin(lat2) - Math.Sin(lat1) * Math.Cos(lat2) * Math.Cos(dLon);
+
+            // Calculate initial bearing in degrees (0° to 360°)
+            double brng = Math.Atan2(y, x);
+            double degrees = (ToDegrees(brng) + 360) % 360;
+
+            // Convert degrees to cardinal direction strings
+            return DegreesToCardinal(degrees);
+        }
+
+        private static double ToRadians(double degrees) => degrees * (Math.PI / 180);
+        private static double ToDegrees(double radians) => radians * (180 / Math.PI);
+
+        private static string DegreesToCardinal(double degrees)
+        {
+            string[] caridnals = { "North", "North East", "East", "South East", "South", "South West", "West", "North West", "North" };
+
+            // Divide by 45 to get the index (8 sectors of 45 degrees)
+            // Adding 22.5 shifts the sectors so "North" covers 337.5° to 22.5°
+            int index = (int)Math.Round(((double)degrees % 360) / 45);
+
+            return caridnals[index];
+        }
+
+        public static int GetDistance(Country o, Country t)
+        {
+            // Safety check: Ensure both countries and their coordinates exist
+            if (o?.latlng == null || o.latlng.Count < 2 ||
+                t?.latlng == null || t.latlng.Count < 2)
+            {
+                return 500000; // :)
+            }
+
+            double R = 6371; // Radius of the Earth in km
+            double dLat = ToRadians(t.latlng[0] - o.latlng[0]);
+            double dLon = ToRadians(t.latlng[1] - o.latlng[1]);
+
+            double a =
+                Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
+                Math.Cos(ToRadians(o.latlng[0])) * Math.Cos(ToRadians(t.latlng[0])) * Math.Sin(dLon / 2) * Math.Sin(dLon / 2);
+
+            double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+            double distance = R * c; // Distance in km
+
+            // Return the rounded integer with "km" appended
+            return (int)Math.Round(distance);
+        }
     }
 }

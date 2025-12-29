@@ -2,17 +2,17 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GeoSilhouette.Pages.GamePage"
-             Title="">
+             Title="Try to guess the country!">
 
 
 
     <VerticalStackLayout>
         <Grid
-            RowDefinitions="Auto,Auto,Auto,*"
+            RowDefinitions="Auto,Auto,*"
             Padding="20"
             RowSpacing="20">
 
-            <!-- ROUND COUNTER -->
+            <!-- ROUND COUNTER --><!--
             <HorizontalStackLayout Grid.Row="0"
                     HorizontalOptions="Center">
                 <Label
@@ -28,15 +28,14 @@
                     FontAttributes="Bold, Italic"
                     Padding="10, 0, 10, 0"
                     HorizontalOptions="Center"/>
-            </HorizontalStackLayout>
+            </HorizontalStackLayout>-->
 
             <!-- IMAGE CARD -->
 
 
             <Frame
-                Grid.Row="1"
-                Margin="0"
-                Padding="10"
+                Grid.Row="0"
+                Padding="10, 15"
                 CornerRadius="16"
                 HasShadow="True"
                     HorizontalOptions="Fill"
@@ -49,7 +48,7 @@
 
             <!-- DROPDOWN / PICKER -->
             <Border
-                Grid.Row="2"
+                Grid.Row="1"
                 Padding="10">
 
                 <VerticalStackLayout>
@@ -65,20 +64,24 @@
 
                         <Entry
                             Grid.Column="0"
-                            Placeholder="Filter for country"/>
+                            Placeholder="Filter for country"
+                            Text="{Binding FilterText}"
+                            />
 
                         <Button
                             Grid.Column="1"
                             Text="Guess"
                             FontSize="20"
-                            WidthRequest="120"/>
+                            WidthRequest="120"
+                            Command="{Binding GuessCommand}"
+                            />
 
                     </Grid>
 
 
                     <Picker
                         Title="Select a country"
-                        ItemsSource="{Binding FilteredCountries}"
+                        ItemsSource="{Binding SelectableCountries}"
                         ItemDisplayBinding="{Binding realName}"
                         SelectedItem="{Binding SelectedCountry, Mode=TwoWay}"/>
 
@@ -88,156 +91,45 @@
 
             <!-- ANSWERS LIST -->
             <Border Padding="10"
-                    HeightRequest="270"
-                    Grid.Row="3">
+                    HeightRequest="330"
+                    Grid.Row="2">
                 <ScrollView Padding="10">
 
-                    <VerticalStackLayout>
+                    <VerticalStackLayout x:Name="DirectionsContainer">
 
-                        <VerticalStackLayout HeightRequest="50"
+                        <VerticalStackLayout HeightRequest="49"
                                 Spacing="0">
                             <Label
-                                Text="United States"
+                                Text="A coutry will apper here"
                                 VerticalTextAlignment="Center"
                                 FontAttributes="Bold"
                                 FontSize="18"/>
 
                             <Label
-                                Text="East"
+                                Text="And a leading direction here"
                                 Margin="16,0,0,100"
                                 VerticalTextAlignment="Center"
                                 FontAttributes="Bold"
                                 FontSize="18"
-                                TextColor="Red"/>
+                                TextColor="Gray"/>
                         </VerticalStackLayout>
-                        <VerticalStackLayout HeightRequest="50"
+                        <!--<VerticalStackLayout HeightRequest="50"
                                 Spacing="0">
                             <Label
-                                Text="United States"
+                                Text="Mexico"
                                 VerticalTextAlignment="Center"
                                 FontAttributes="Bold"
                                 FontSize="18"/>
 
                             <Label
-                                Text="East"
+                                Text="North East"
                                 Margin="16,0,0,100"
                                 VerticalTextAlignment="Center"
                                 FontAttributes="Bold"
                                 FontSize="18"
                                 TextColor="Red"/>
-                        </VerticalStackLayout>
-                        <VerticalStackLayout HeightRequest="50"
-                                Spacing="0">
-                            <Label
-                                Text="United States"
-                                VerticalTextAlignment="Center"
-                                FontAttributes="Bold"
-                                FontSize="18"/>
-
-                            <Label
-                                Text="East"
-                                Margin="16,0,0,100"
-                                VerticalTextAlignment="Center"
-                                FontAttributes="Bold"
-                                FontSize="18"
-                                TextColor="Red"/>
-                        </VerticalStackLayout>
-                        <VerticalStackLayout HeightRequest="50"
-                                Spacing="0">
-                            <Label
-                                Text="United States"
-                                VerticalTextAlignment="Center"
-                                FontAttributes="Bold"
-                                FontSize="18"/>
-
-                            <Label
-                                Text="East"
-                                Margin="16,0,0,100"
-                                VerticalTextAlignment="Center"
-                                FontAttributes="Bold"
-                                FontSize="18"
-                                TextColor="Red"/>
-                        </VerticalStackLayout>
-                        <VerticalStackLayout HeightRequest="50"
-                                Spacing="0">
-                            <Label
-                                Text="United States"
-                                VerticalTextAlignment="Center"
-                                FontAttributes="Bold"
-                                FontSize="18"/>
-
-                            <Label
-                                Text="East"
-                                Margin="16,0,0,100"
-                                VerticalTextAlignment="Center"
-                                FontAttributes="Bold"
-                                FontSize="18"
-                                TextColor="Red"/>
-                        </VerticalStackLayout>
-                        <VerticalStackLayout HeightRequest="50"
-                                Spacing="0">
-                            <Label
-                                Text="United States"
-                                VerticalTextAlignment="Center"
-                                FontAttributes="Bold"
-                                FontSize="18"/>
-
-                            <Label
-                                Text="East"
-                                Margin="16,0,0,100"
-                                VerticalTextAlignment="Center"
-                                FontAttributes="Bold"
-                                FontSize="18"
-                                TextColor="Red"/>
-                        </VerticalStackLayout>
-                        <VerticalStackLayout HeightRequest="50"
-                                Spacing="0">
-                            <Label
-                                Text="United States"
-                                VerticalTextAlignment="Center"
-                                FontAttributes="Bold"
-                                FontSize="18"/>
-
-                            <Label
-                                Text="East"
-                                Margin="16,0,0,100"
-                                VerticalTextAlignment="Center"
-                                FontAttributes="Bold"
-                                FontSize="18"
-                                TextColor="Red"/>
-                        </VerticalStackLayout>
-                        <VerticalStackLayout HeightRequest="50"
-                                Spacing="0">
-                            <Label
-                                Text="United States"
-                                VerticalTextAlignment="Center"
-                                FontAttributes="Bold"
-                                FontSize="18"/>
-
-                            <Label
-                                Text="East"
-                                Margin="16,0,0,100"
-                                VerticalTextAlignment="Center"
-                                FontAttributes="Bold"
-                                FontSize="18"
-                                TextColor="Red"/>
-                        </VerticalStackLayout>
-                        <VerticalStackLayout HeightRequest="50"
-                                Spacing="0">
-                            <Label
-                                Text="United States"
-                                VerticalTextAlignment="Center"
-                                FontAttributes="Bold"
-                                FontSize="18"/>
-
-                            <Label
-                                Text="East"
-                                Margin="16,0,0,100"
-                                VerticalTextAlignment="Center"
-                                FontAttributes="Bold"
-                                FontSize="18"
-                                TextColor="Red"/>
-                        </VerticalStackLayout>
+                        </VerticalStackLayout>-->
+                        
                     </VerticalStackLayout>
                 </ScrollView>
             </Border>

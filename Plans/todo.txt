@@ -1,2 +1,4 @@
 ﻿statusbar
 difficulty info btn
+soundeffects
+directions arrow

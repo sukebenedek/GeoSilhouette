@@ -21,8 +21,8 @@ namespace GeoSilhouette
             builder.Services.AddSingleton<ViewModels.MainViewModel>();
             builder.Services.AddSingleton<Pages.ChosePage>();
             builder.Services.AddSingleton<ViewModels.ChoseViewModel>();
-            builder.Services.AddSingleton<Pages.GamePage>();
-            builder.Services.AddSingleton<ViewModels.GameViewModel>();
+            builder.Services.AddTransient<Pages.GamePage>();
+            builder.Services.AddTransient<ViewModels.GameViewModel>();
             builder.Services.AddSingleton<Pages.StatsPage>();
             builder.Services.AddSingleton<ViewModels.StatViewModel>();
 
