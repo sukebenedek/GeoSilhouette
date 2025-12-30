@@ -2,11 +2,72 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GeoSilhouette.Pages.StatsPage"
-             Title="StatsPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="stats"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Game Statistics">
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="24">
+
+            <!-- CORE STATS -->
+            <Frame Style="{StaticResource StatsCard}">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Core Stats" Style="{StaticResource StatsHeader}" />
+
+                    <Grid ColumnDefinitions="*,Auto"
+                  RowDefinitions="Auto,Auto,Auto,Auto">
+
+                        <Label Text="Rounds played" FontSize="16"/>
+                        <Label Text="{Binding RoundsPlayed}" Grid.Column="1" FontSize="16"/>
+
+                        <Label Text="Total guesses" Grid.Row="1" FontSize="16"/>
+                        <Label Text="{Binding TotalGuesses}" Grid.Row="1" Grid.Column="1" FontSize="16"/>
+
+                        <Label Text="Correct guesses" Grid.Row="2" FontSize="16"/>
+                        <Label Text="{Binding CorrectGuesses}" Grid.Row="2" Grid.Column="1" FontSize="16"/>
+
+                        <Label Text="Accuracy" Grid.Row="3" FontSize="16"/>
+                        <Label Text="{Binding Accuracy, StringFormat='{}{0:F1}%'}"
+                       Grid.Row="3" Grid.Column="1" FontSize="16"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- TIME STATS -->
+            <Frame Style="{StaticResource StatsCard}">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Time Stats" Style="{StaticResource StatsHeader}" />
+
+                    <Grid ColumnDefinitions="*,Auto"
+                  RowDefinitions="Auto,Auto">
+
+                        <Label Text="Total playtime" FontSize="16"/>
+                        <Label Text="{Binding TotalPlaytime}" Grid.Column="1" FontSize="16"/>
+
+                        <Label Text="Avg time / round" Grid.Row="1" FontSize="16"/>
+                        <Label Text="{Binding AvgTimePerRound}" Grid.Row="1" Grid.Column="1" FontSize="16"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- DIFFICULTY -->
+            <Frame Style="{StaticResource StatsCard}">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Difficulty" Style="{StaticResource StatsHeader}" />
+
+                    <Grid ColumnDefinitions="*,Auto"
+                  RowDefinitions="Auto,Auto,Auto">
+
+                        <Label Text="Easy games" FontSize="16"/>
+                        <Label Text="{Binding EasyGames}" Grid.Column="1" FontSize="16"/>
+
+                        <Label Text="Medium games" Grid.Row="1" FontSize="16"/>
+                        <Label Text="{Binding MediumGames}" Grid.Row="1" Grid.Column="1" FontSize="16"/>
+
+                        <Label Text="Hard games" Grid.Row="2" FontSize="16"/>
+                        <Label Text="{Binding HardGames}" Grid.Row="2" Grid.Column="1" FontSize="16"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
 </ContentPage>

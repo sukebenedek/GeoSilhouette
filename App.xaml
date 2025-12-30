@@ -9,6 +9,19 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+    <Style x:Key="StatsCard" TargetType="Frame">
+        <Setter Property="CornerRadius" Value="16"/>
+                <Setter Property="Padding" Value="20"/>
+
+                <Setter Property="HasShadow" Value="True"/>
+    </Style>
+
+    <Style x:Key="StatsHeader" TargetType="Label">
+                <Setter Property="FontSize" Value="20"/>
+
+                <Setter Property="FontAttributes" Value="Bold"/>
+    </Style>
         </ResourceDictionary>
     </Application.Resources>
+
 </Application>
