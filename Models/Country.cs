@@ -98,13 +98,25 @@ namespace GeoSilhouette
 
         private static string DegreesToCardinal(double degrees)
         {
-            string[] caridnals = { "North", "North East", "East", "South East", "South", "South West", "West", "North West", "North" };
+            string[] cardinals =
+{
+    "North ⇑",
+    "North East ⇗",
+    "East ⇒",
+    "South East ⇘",
+    "South ⇓",
+    "South West ⇙",
+    "West ⇐",
+    "North West ⇖",
+    "North ⇑"
+};
+
 
             // Divide by 45 to get the index (8 sectors of 45 degrees)
             // Adding 22.5 shifts the sectors so "North" covers 337.5° to 22.5°
             int index = (int)Math.Round(((double)degrees % 360) / 45);
 
-            return caridnals[index];
+            return cardinals[index];
         }
 
         public static int GetDistance(Country o, Country t)

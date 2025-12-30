@@ -63,6 +63,7 @@
                 Text="Statistics" HeightRequest="80"
                 FontAttributes="Bold"
                 CornerRadius="14"
+                Command="{Binding ViewStatsCommand}"
             />
 
             <Label

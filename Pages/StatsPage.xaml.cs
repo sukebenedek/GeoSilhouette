@@ -2,8 +2,9 @@ namespace GeoSilhouette.Pages;
 
 public partial class StatsPage : ContentPage
 {
-	public StatsPage()
+	public StatsPage(ViewModels.StatViewModel vm)
 	{
-		InitializeComponent();
-	}
+        InitializeComponent();
+        BindingContext = vm;
+    }
 }

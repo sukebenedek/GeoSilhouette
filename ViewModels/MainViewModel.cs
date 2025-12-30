@@ -17,5 +17,12 @@ namespace GeoSilhouette.ViewModels
             // navigate to ChoosePage (assuming registered in AppShell)
             await Shell.Current.GoToAsync(nameof(Pages.ChosePage));
         }
+
+        [RelayCommand]
+        private async Task ViewStats()
+        {
+            // navigate to ChoosePage (assuming registered in AppShell)
+            await Shell.Current.GoToAsync(nameof(Pages.StatsPage));
+        }
     }
 }
