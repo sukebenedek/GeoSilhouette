@@ -13,8 +13,39 @@ namespace GeoSilhouette.ViewModels
         [RelayCommand]
         private async Task Chose(string difficultyLevel)
         {
-            // Use the variable 'difficultyLevel' inside the curly braces
             await Shell.Current.GoToAsync($"{nameof(Pages.GamePage)}?difficulty={difficultyLevel}");
+        }
+
+        [RelayCommand]
+        private async Task ShowInfo(string difficultyLevel)
+        {
+            string title = "Difficulty Info";
+            string message = "";
+
+            // Determine message based on the difficulty logic you provided
+            switch (difficultyLevel.ToLower())
+            {
+                case "easy":
+                    title = "Newborn Infant";
+                    message = "Filters: Population > 7,000,000 and excludes Africa.";
+                    break;
+
+                case "medium":
+                    title = "Medium";
+                    message = "Filters: Population > 500,000.";
+                    break;
+
+                case "hard":
+                    title = "Violent Agonizing Death";
+                    message = "Filters: None. All countries included.";
+                    break;
+
+                default:
+                    message = "Unknown difficulty.";
+                    break;
+            }
+
+            await Shell.Current.DisplayAlert(title, message, "OK");
         }
     }
 }

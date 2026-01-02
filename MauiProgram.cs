@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui;
+using GeoSilhouette.Database;
 using Microsoft.Extensions.Logging;
 
 namespace GeoSilhouette
@@ -18,14 +19,17 @@ namespace GeoSilhouette
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
             builder.Services.AddSingleton<MainPage>();
+
             builder.Services.AddSingleton<ViewModels.MainViewModel>();
-            builder.Services.AddSingleton<Pages.ChosePage>();
             builder.Services.AddSingleton<ViewModels.ChoseViewModel>();
-            builder.Services.AddTransient<Pages.GamePage>();
-            builder.Services.AddTransient<ViewModels.GameViewModel>();
-            builder.Services.AddSingleton<Pages.StatsPage>();
+            builder.Services.AddSingleton<ViewModels.GameViewModel>();
             builder.Services.AddSingleton<ViewModels.StatViewModel>();
 
+            builder.Services.AddSingleton<Pages.ChosePage>();
+            builder.Services.AddSingleton<Pages.GamePage>();
+            builder.Services.AddSingleton<Pages.StatsPage>();
+
+            builder.Services.AddSingleton<StatsDatabase>();
 
 
 

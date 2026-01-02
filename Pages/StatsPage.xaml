@@ -39,10 +39,19 @@
                   RowDefinitions="Auto,Auto">
 
                         <Label Text="Total playtime" FontSize="16"/>
-                        <Label Text="{Binding TotalPlaytime}" Grid.Column="1" FontSize="16"/>
+                        <Label
+    Text="{Binding TotalPlaytime, StringFormat='{}{0:hh\\:mm\\:ss\\,fff}'}"
+    Grid.Column="1"
+    FontSize="16"/>
 
                         <Label Text="Avg time / round" Grid.Row="1" FontSize="16"/>
-                        <Label Text="{Binding AvgTimePerRound}" Grid.Row="1" Grid.Column="1" FontSize="16"/>
+                        <Label
+    Text="{Binding AvgTimePerRound, StringFormat='{}{0:hh\\:mm\\:ss\\,fff}'}"
+    Grid.Row="1"
+    Grid.Column="1"
+    FontSize="16"/>
+
+
                     </Grid>
                 </VerticalStackLayout>
             </Frame>
@@ -55,13 +64,13 @@
                     <Grid ColumnDefinitions="*,Auto"
                   RowDefinitions="Auto,Auto,Auto">
 
-                        <Label Text="Easy games" FontSize="16"/>
+                        <Label Text="Easy games compleated" FontSize="16"/>
                         <Label Text="{Binding EasyGames}" Grid.Column="1" FontSize="16"/>
 
-                        <Label Text="Medium games" Grid.Row="1" FontSize="16"/>
+                        <Label Text="Medium games compleated" Grid.Row="1" FontSize="16"/>
                         <Label Text="{Binding MediumGames}" Grid.Row="1" Grid.Column="1" FontSize="16"/>
 
-                        <Label Text="Hard games" Grid.Row="2" FontSize="16"/>
+                        <Label Text="Hard games compleated" Grid.Row="2" FontSize="16"/>
                         <Label Text="{Binding HardGames}" Grid.Row="2" Grid.Column="1" FontSize="16"/>
                     </Grid>
                 </VerticalStackLayout>

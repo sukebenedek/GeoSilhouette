@@ -23,6 +23,7 @@ public partial class GamePage : ContentPage
         {
             vm.OnPageAppearing();
         }
+
     }
 
     public void ClearGuessesFromUI()
