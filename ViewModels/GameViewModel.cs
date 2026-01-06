@@ -39,6 +39,7 @@ public partial class GameViewModel : ObservableObject
     public Action<string, string, int, bool> UI_AddGuessToScreen;
     public Action UI_ClearGuesses;
     public Action UI_AddPlaceholderToUI;
+    public Action<bool>? UI_SetSuccessBackground;
 
     private DateTime _roundStart;
 
@@ -48,6 +49,8 @@ public partial class GameViewModel : ObservableObject
     [RelayCommand]
     public async Task OnPageAppearing()
     {
+        UI_ClearGuesses?.Invoke();
+        UI_AddPlaceholderToUI?.Invoke();
         _roundStart = DateTime.UtcNow;
         _stats.RoundsPlayed++;
         await _stats.SaveAsync();
@@ -55,9 +58,13 @@ public partial class GameViewModel : ObservableObject
         {
             case "easy":
                 FilteredCountries = Countries
-                    .Where(c => c.population > 7_000_000 && !c.continents.Contains("Africa"))
+                    .Where(c =>
+                        (c.population > 7_000_000 && !c.continents.Contains("Africa"))
+                        || (c.population > 350_000 && c.continents.Contains("Europe"))
+                    )
                     .ToObservableCollection();
                 break;
+
 
             case "medium":
                 FilteredCountries = Countries
@@ -66,7 +73,7 @@ public partial class GameViewModel : ObservableObject
                 break;
 
             case "hard":
-                FilteredCountries = Countries.ToObservableCollection();
+                FilteredCountries = Countries.Where(c => c.population < 25_000_000).ToObservableCollection();
                 break;
         }
 
@@ -100,7 +107,9 @@ public partial class GameViewModel : ObservableObject
     // --------------------
     partial void OnFilterTextChanged(string value)
     {
-        UpdateFilteredCountries(value);
+        var query = value?.Trim();
+
+        UpdateFilteredCountries(query);
 
         SelectedCountry = null;
         SelectableCountries = SelectableCountries
@@ -157,6 +166,14 @@ public partial class GameViewModel : ObservableObject
             UI_ClearGuesses?.Invoke();
             UI_AddPlaceholderToUI?.Invoke();
             await _stats.SaveAsync();
+
+            UI_SetSuccessBackground?.Invoke(true);
+
+            await Task.Delay(1000);
+
+            UI_SetSuccessBackground?.Invoke(false);
+
+
             await OnPageAppearing();
         }
         else

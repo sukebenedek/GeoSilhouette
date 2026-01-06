@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GeoSilhouette.Pages.ChosePage"
-             Title="">
+             Title="The big decison"
+             Shell.TitleColor="White"       
+Shell.ForegroundColor="White">
 
     <ScrollView>
         <Grid
@@ -45,11 +47,15 @@
         Command="{Binding ShowInfoCommand}"
         CommandParameter="medium" />
 
-            <Button Text="Violent Agonizing Death" 
-                    Grid.Row="4" Grid.Column="0" 
+            <Button
+                Grid.Row="4" Grid.Column="0" 
                     HeightRequest="80"
                     Command="{Binding ChoseCommand}"
-                    CommandParameter="hard" />
+                    CommandParameter="hard"
+                FontSize="20"> <Button.Text>
+                Violent Agonizing Death
+                </Button.Text>
+            </Button>
 
             <Button Text="i" 
         Grid.Row="4" Grid.Column="1"

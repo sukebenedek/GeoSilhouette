@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GeoSilhouette.Pages.StatsPage"
-             Title="Game Statistics">
+             Title="Game Statistics"
+             Shell.TitleColor="White"       
+             Shell.ForegroundColor="White">
     <ScrollView>
         <VerticalStackLayout Spacing="20" Padding="24">
 
@@ -14,43 +16,49 @@
                     <Grid ColumnDefinitions="*,Auto"
                   RowDefinitions="Auto,Auto,Auto,Auto">
 
-                        <Label Text="Rounds played" FontSize="16"/>
-                        <Label Text="{Binding RoundsPlayed}" Grid.Column="1" FontSize="16"/>
+                        <Label Text="Rounds played:" FontSize="18"/>
+                        <Label Text="{Binding RoundsPlayed}" Grid.Column="1" FontAttributes="Italic" Padding="5" FontSize="18"/>
 
-                        <Label Text="Total guesses" Grid.Row="1" FontSize="16"/>
-                        <Label Text="{Binding TotalGuesses}" Grid.Row="1" Grid.Column="1" FontSize="16"/>
+                        <Label Text="Total guesses:" Grid.Row="1" FontSize="18"/>
+                        <Label Text="{Binding TotalGuesses}" Grid.Row="1" Grid.Column="1" FontAttributes="Italic" Padding="5" FontSize="18"/>
 
-                        <Label Text="Correct guesses" Grid.Row="2" FontSize="16"/>
-                        <Label Text="{Binding CorrectGuesses}" Grid.Row="2" Grid.Column="1" FontSize="16"/>
+                        <Label Text="Correct guesses:" Grid.Row="2" FontSize="18"/>
+                        <Label Text="{Binding CorrectGuesses}" Grid.Row="2" Grid.Column="1" FontAttributes="Italic" Padding="5" FontSize="18"/>
 
-                        <Label Text="Accuracy" Grid.Row="3" FontSize="16"/>
-                        <Label Text="{Binding Accuracy, StringFormat='{}{0:F1}%'}"
-                       Grid.Row="3" Grid.Column="1" FontSize="16"/>
+                        <Label Text="Accuracy:" Grid.Row="3" FontSize="18"/>
+                        <Label Text="{Binding Accuracy, StringFormat='{}{0:F1}% '}"
+                       Grid.Row="3" Grid.Column="1" FontAttributes="Italic" Padding="5" FontSize="18"/>
                     </Grid>
                 </VerticalStackLayout>
             </Frame>
 
-            <!-- TIME STATS -->
             <Frame Style="{StaticResource StatsCard}">
                 <VerticalStackLayout Spacing="12">
                     <Label Text="Time Stats" Style="{StaticResource StatsHeader}" />
 
-                    <Grid ColumnDefinitions="*,Auto"
-                  RowDefinitions="Auto,Auto">
+                    <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*">
 
-                        <Label Text="Total playtime" FontSize="16"/>
-                        <Label
-    Text="{Binding TotalPlaytime, StringFormat='{}{0:hh\\:mm\\:ss\\,fff}'}"
-    Grid.Column="1"
-    FontSize="16"/>
+                        <Label Grid.Row="0" 
+                           Text="Total playtime:" 
+                           FontSize="18"/>
 
-                        <Label Text="Avg time / round" Grid.Row="1" FontSize="16"/>
-                        <Label
-    Text="{Binding AvgTimePerRound, StringFormat='{}{0:hh\\:mm\\:ss\\,fff}'}"
-    Grid.Row="1"
-    Grid.Column="1"
-    FontSize="16"/>
+                        <Label Grid.Row="1"
+                           Text="{Binding TotalPlaytime, StringFormat='{}{0:hh\\:mm\\:ss\\,fff} '}"
+                           HorizontalOptions="End"
+                           FontAttributes="Italic" 
+                           Padding="5"
+                           FontSize="18"/>
 
+                        <Label Grid.Row="2" 
+                           Text="Avg time per round:" 
+                           FontSize="18"
+                           Margin="0,10,0,0"/>
+                        <Label Grid.Row="3"
+                           Text="{Binding AvgTimePerRound, StringFormat='{}{0:hh\\:mm\\:ss\\,fff} '}"
+                           HorizontalOptions="End"
+                           FontAttributes="Italic" 
+                           Padding="5"
+                           FontSize="18"/>
 
                     </Grid>
                 </VerticalStackLayout>
@@ -59,19 +67,19 @@
             <!-- DIFFICULTY -->
             <Frame Style="{StaticResource StatsCard}">
                 <VerticalStackLayout Spacing="12">
-                    <Label Text="Difficulty" Style="{StaticResource StatsHeader}" />
+                    <Label Text="Difficulty Stats" Style="{StaticResource StatsHeader}" />
 
                     <Grid ColumnDefinitions="*,Auto"
                   RowDefinitions="Auto,Auto,Auto">
 
-                        <Label Text="Easy games compleated" FontSize="16"/>
-                        <Label Text="{Binding EasyGames}" Grid.Column="1" FontSize="16"/>
+                        <Label Text="Easy games completed:" FontSize="18"/>
+                        <Label Text="{Binding EasyGames, StringFormat='{0} '}" Grid.Column="1" FontAttributes="Italic" Padding="5" FontSize="18" HorizontalOptions="End"/>
 
-                        <Label Text="Medium games compleated" Grid.Row="1" FontSize="16"/>
-                        <Label Text="{Binding MediumGames}" Grid.Row="1" Grid.Column="1" FontSize="16"/>
+                        <Label Text="Medium games completed:" Grid.Row="1" FontSize="18"/>
+                        <Label Text="{Binding MediumGames, StringFormat='{0} '}" Grid.Row="1" Grid.Column="1" FontAttributes="Italic" Padding="5" FontSize="18" HorizontalOptions="End"/>
 
-                        <Label Text="Hard games compleated" Grid.Row="2" FontSize="16"/>
-                        <Label Text="{Binding HardGames}" Grid.Row="2" Grid.Column="1" FontSize="16"/>
+                        <Label Text="Hard games completed:" Grid.Row="2" FontSize="18"/>
+                        <Label Text="{Binding HardGames, StringFormat='{0} '}" Grid.Row="2" Grid.Column="1" FontAttributes="Italic" Padding="5" FontSize="18" HorizontalOptions="End"/>
                     </Grid>
                 </VerticalStackLayout>
             </Frame>

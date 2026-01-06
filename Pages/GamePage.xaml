@@ -2,36 +2,16 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GeoSilhouette.Pages.GamePage"
-             Title="Try to guess the country!">
+             Title="Try to guess the country!"
+             Shell.TitleColor="White"       
+Shell.ForegroundColor="White">
 
 
 
-    <VerticalStackLayout>
         <Grid
             RowDefinitions="Auto,Auto,*"
             Padding="20"
             RowSpacing="20">
-
-            <!-- ROUND COUNTER --><!--
-            <HorizontalStackLayout Grid.Row="0"
-                    HorizontalOptions="Center">
-                <Label
-                    Text="Round"
-                    FontSize="36"
-                    FontAttributes="Bold"
-                    HorizontalOptions="Center"/>
-
-                <Label
-                    Text="0/5"
-                    WidthRequest="90"
-                    FontSize="36"
-                    FontAttributes="Bold, Italic"
-                    Padding="10, 0, 10, 0"
-                    HorizontalOptions="Center"/>
-            </HorizontalStackLayout>-->
-
-            <!-- IMAGE CARD -->
-
 
             <Frame
                 Grid.Row="0"
@@ -46,18 +26,14 @@
                     Aspect="AspectFit"/>
             </Frame>
 
-            <!-- DROPDOWN / PICKER -->
             <Border
                 Grid.Row="1"
-                Padding="10">
+                Padding="10"
+                
+                >
 
                 <VerticalStackLayout>
 
-                    <!--<SearchBar
-                        x:Name="searchBar"
-                            SearchCommand="{Binding PerformSearch}"
-                            SearchCommandParameter="{Binding Text, x:DataType='SearchBar', Source={x:Reference searchBar}}"
-                        />-->
                     <Grid
                         ColumnDefinitions="*,Auto"
                         ColumnSpacing="10">
@@ -66,6 +42,7 @@
                             Grid.Column="0"
                             Placeholder="Filter for country"
                             Text="{Binding FilterText}"
+                             x:Name="GuessEntry"
                             />
 
                         <Button
@@ -89,50 +66,14 @@
 
             </Border>
 
-            <!-- ANSWERS LIST -->
             <Border Padding="10"
-                    HeightRequest="330"
                     Grid.Row="2">
-                <ScrollView Padding="10">
+                <ScrollView Padding="10" >  
+                    <VerticalStackLayout x:Name="DirectionsContainer" MinimumHeightRequest="200">
 
-                    <VerticalStackLayout x:Name="DirectionsContainer">
-
-                        <VerticalStackLayout HeightRequest="49"
-                                Spacing="0">
-                            <Label
-                                Text="A coutry will apper here"
-                                VerticalTextAlignment="Center"
-                                FontAttributes="Bold"
-                                FontSize="18"/>
-
-                            <Label
-                                Text="And a leading direction here"
-                                Margin="16,0,0,100"
-                                VerticalTextAlignment="Center"
-                                FontAttributes="Bold"
-                                FontSize="18"
-                                TextColor="Gray"/>
-                        </VerticalStackLayout>
-                        <!--<VerticalStackLayout HeightRequest="50"
-                                Spacing="0">
-                            <Label
-                                Text="Mexico"
-                                VerticalTextAlignment="Center"
-                                FontAttributes="Bold"
-                                FontSize="18"/>
-
-                            <Label
-                                Text="North East"
-                                Margin="16,0,0,100"
-                                VerticalTextAlignment="Center"
-                                FontAttributes="Bold"
-                                FontSize="18"
-                                TextColor="Red"/>
-                        </VerticalStackLayout>-->
                         
                     </VerticalStackLayout>
                 </ScrollView>
             </Border>
         </Grid>
-    </VerticalStackLayout>
 </ContentPage>

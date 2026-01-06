@@ -1,5 +1,6 @@
 using GeoSilhouette.ViewModels;
-
+using CommunityToolkit.Maui.Core.Platform;
+using Microsoft.Maui;
 namespace GeoSilhouette.Pages;
 
 public partial class GamePage : ContentPage
@@ -22,18 +23,29 @@ public partial class GamePage : ContentPage
         if (BindingContext is GameViewModel vm)
         {
             vm.OnPageAppearing();
+
+            var originalColor = this.BackgroundColor;
+
+            vm.UI_SetSuccessBackground = (isSuccess) =>
+            {
+                // If success, set Green. Otherwise, revert to original.
+                this.BackgroundColor = isSuccess ? Colors.Green : originalColor;
+            };
         }
 
     }
 
-    public void ClearGuessesFromUI()
+    public async void ClearGuessesFromUI()
     {
+        await GuessEntry.HideKeyboardAsync(CancellationToken.None);
+
         // This removes every label/stack you added to the container
         DirectionsContainer.Children.Clear();
     }
 
-    public void AddGuessToUI(string countryName, string directionHint, int distance, bool isEasy)
+    public async void AddGuessToUI(string countryName, string directionHint, int distance, bool isEasy)
     {
+        await GuessEntry.HideKeyboardAsync(CancellationToken.None);
         for (int i = DirectionsContainer.Children.Count - 1; i >= 0; i--)
         {
             // 1. Get the child as a VisualElement (so we can check HeightRequest)

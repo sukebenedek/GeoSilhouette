@@ -1,7 +1,7 @@
 ﻿<?xml version = "1.0" encoding = "UTF-8" ?>
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:GeoSilhouette"
+             xmlns:local="clr-namespace:GeoSilhouette" 
              x:Class="GeoSilhouette.App">
     <Application.Resources>
         <ResourceDictionary>
@@ -14,13 +14,26 @@
                 <Setter Property="Padding" Value="20"/>
 
                 <Setter Property="HasShadow" Value="True"/>
-    </Style>
+                <Setter Property="Shadow">
+                    <Setter.Value>
+                        <Shadow Brush="{x:DynamicResource Primary}"
+                Offset="0,0"
+                Radius="10"
+                Opacity="1.0" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="BackgroundColor" Value="{x:DynamicResource Primary}"/>
+    </Style>    
 
     <Style x:Key="StatsHeader" TargetType="Label">
-                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontSize" Value="32"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="Padding" Value="0,0,12,0"/>
 
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
     </Style>
+            
         </ResourceDictionary>
     </Application.Resources>
 
