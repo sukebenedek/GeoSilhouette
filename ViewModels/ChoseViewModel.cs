@@ -27,17 +27,17 @@ namespace GeoSilhouette.ViewModels
             {
                 case "easy":
                     title = "Newborn Infant";
-                    message = "Filters: Population > 7,000,000 and excludes Africa OR Population > 350,000 in Europe";
+                    message = "Filters: Population > 7,000,000 and excludes Africa OR Population > 350,000 in Europe. With distances showing.";
                     break;
 
                 case "medium":
                     title = "Medium";
-                    message = "Filters: Population > 500,000.";
+                    message = "Filters: Population > 500,000. Without distances showing.";
                     break;
 
                 case "hard":
                     title = "Violent Agonizing Death";
-                    message = "Filters: None. All UN recognized countries included where Population < 25,000,000.";
+                    message = "Filters: None. All UN recognized countries included where Population < 25,000,000. Without distances showing.";
                     break;
 
                 default:

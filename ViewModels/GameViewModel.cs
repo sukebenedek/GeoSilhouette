@@ -135,58 +135,62 @@ public partial class GameViewModel : ObservableObject
     [RelayCommand]
     private async Task Guess()
     {
-
-        if (SelectedCountry == null)
+        try
         {
-            await Shell.Current.DisplayAlert("Error", "Please select a country!", "OK");
-            return;
-        }
-
-        _stats.TotalGuesses++;
-        await _stats.SaveAsync();
-
-        if (SelectedCountry.cca2 == ChosenOne.cca2)
-        {
-            _stats.CorrectGuesses++;
-
-            var roundTime = DateTime.UtcNow - _roundStart;
-            _stats.TotalPlaytime += roundTime;
-            _stats.AvgTimePerRound =
-                TimeSpan.FromSeconds(
-                    _stats.TotalPlaytime.TotalSeconds / _stats.RoundsPlayed
-                );
-
-            switch (Difficulty)
+            if (SelectedCountry == null)
             {
-                case "easy": _stats.EasyGames++; break;
-                case "medium": _stats.MediumGames++; break;
-                case "hard": _stats.HardGames++; break;
+                await Shell.Current.DisplayAlert("Error", "Please select a country!", "OK");
+                return;
             }
 
-            UI_ClearGuesses?.Invoke();
-            UI_AddPlaceholderToUI?.Invoke();
+            _stats.TotalGuesses++;
             await _stats.SaveAsync();
 
-            UI_SetSuccessBackground?.Invoke(true);
+            if (SelectedCountry.cca2 == ChosenOne.cca2)
+            {
+                _stats.CorrectGuesses++;
 
-            await Task.Delay(1000);
+                var roundTime = DateTime.UtcNow - _roundStart;
+                _stats.TotalPlaytime += roundTime;
+                _stats.AvgTimePerRound =
+                    TimeSpan.FromSeconds(
+                        _stats.TotalPlaytime.TotalSeconds / _stats.RoundsPlayed == 0 ? 1 : _stats.RoundsPlayed
+                    );
 
-            UI_SetSuccessBackground?.Invoke(false);
+                switch (Difficulty)
+                {
+                    case "easy": _stats.EasyGames++; break;
+                    case "medium": _stats.MediumGames++; break;
+                    case "hard": _stats.HardGames++; break;
+                }
+
+                UI_ClearGuesses?.Invoke();
+                UI_AddPlaceholderToUI?.Invoke();
+                await _stats.SaveAsync();
+
+                UI_SetSuccessBackground?.Invoke(true);
+                await Task.Delay(750);
+                UI_SetSuccessBackground?.Invoke(false);
 
 
-            await OnPageAppearing();
+                await OnPageAppearing();
+            }
+            else
+            {
+                UI_AddGuessToScreen?.Invoke(
+                    SelectedCountry.realName,
+                    Country.GetDirection(SelectedCountry, ChosenOne),
+                    Country.GetDistance(SelectedCountry, ChosenOne),
+                    Difficulty == "easy"
+                );
+                await _stats.SaveAsync();
+
+            }
+            await _stats.SaveAsync();
         }
-        else
+        catch (Exception ex)
         {
-            UI_AddGuessToScreen?.Invoke(
-                SelectedCountry.realName,
-                Country.GetDirection(SelectedCountry, ChosenOne),
-                Country.GetDistance(SelectedCountry, ChosenOne),
-                Difficulty == "easy"
-            );
-            await _stats.SaveAsync();
-
+            await Shell.Current.DisplayAlert("Error", ex.Message, "OK");
         }
-        await _stats.SaveAsync();
     }
 }

@@ -4,7 +4,8 @@
              x:Class="GeoSilhouette.Pages.GamePage"
              Title="Try to guess the country!"
              Shell.TitleColor="White"       
-Shell.ForegroundColor="White">
+Shell.ForegroundColor="White"
+             >
 
 
 

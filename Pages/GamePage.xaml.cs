@@ -30,6 +30,7 @@ public partial class GamePage : ContentPage
             {
                 // If success, set Green. Otherwise, revert to original.
                 this.BackgroundColor = isSuccess ? Colors.Green : originalColor;
+                Shell.SetBackgroundColor(this, isSuccess ? Colors.Green : originalColor);
             };
         }
 
