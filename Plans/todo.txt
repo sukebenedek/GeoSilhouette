@@ -1,3 +1,2 @@
-﻿statusbar
-soundeffects
+﻿soundeffects
 Countries u failed to guess stat
